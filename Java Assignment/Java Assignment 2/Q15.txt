@@ -1,0 +1,30 @@
+class Employee {
+    int emp_id;
+    String emp_name;
+    
+    public Employee(int emp_id, String emp_name) {
+        this.emp_id = emp_id;
+        this.emp_name = emp_name;
+    }
+    
+    public void displayEmployeeDetails() {
+        System.out.println("Employee ID: " + this.emp_id);
+        System.out.println("Employee Name: " + this.emp_name);
+    }
+    
+    public Employee() {
+        this(0, "Unknown");  
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Employee emp1 = new Employee(101, "John Doe");
+        emp1.displayEmployeeDetails();  
+        
+        System.out.println(); 
+        
+        Employee emp2 = new Employee();
+        emp2.displayEmployeeDetails();  
+    }
+}

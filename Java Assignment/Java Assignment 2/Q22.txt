@@ -1,0 +1,66 @@
+class CustomArithmeticException extends Exception {
+    public CustomArithmeticException(String message) {
+        super(message);
+    }
+}
+
+public class CustomExceptionExample {
+
+    public static int calculateEquation(int a, int b, char operator) throws CustomArithmeticException {
+        int result = 0;
+        
+        try {
+            if (operator == '/' && b == 0) {
+                throw new CustomArithmeticException("Error: Division by zero is not allowed.");
+            }
+            
+            if (operator == '*' && (a > Integer.MAX_VALUE / b)) {
+                throw new CustomArithmeticException("Error: Overflow occurred while calculating the result.");
+            }
+            
+            switch (operator) {
+                case '+':
+                    result = a + b;
+                    break;
+                case '-':
+                    result = a - b;
+                    break;
+                case '*':
+                    result = a * b;
+                    break;
+                case '/':
+                    result = a / b;
+                    break;
+                default:
+                    throw new CustomArithmeticException("Error: Unsupported operator.");
+            }
+        } catch (CustomArithmeticException e) {
+            System.out.println(e.getMessage());
+            throw e; 
+        }
+        
+        return result;
+    }
+
+    public static void main(String[] args) {
+        int a = 10;
+        int b = 0;  
+        char operator = '/';
+
+        try {
+            int result = calculateEquation(a, b, operator);
+            System.out.println("Result: " + result);
+        } catch (CustomArithmeticException e) {
+            }
+
+        a = Integer.MAX_VALUE;
+        b = 2;
+        operator = '*';
+
+        try {
+            int result = calculateEquation(a, b, operator);
+            System.out.println("Result: " + result);
+        } catch (CustomArithmeticException e) {
+            }
+    }
+}

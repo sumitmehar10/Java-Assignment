@@ -1,0 +1,43 @@
+class Distance {
+    protected double distanceInMiles;
+
+    public Distance(double distanceInMiles) {
+        this.distanceInMiles = distanceInMiles;
+    }
+
+    public void travelTime() {
+        double time = distanceInMiles / 60;
+        System.out.println("Time to cover the distance of " + distanceInMiles + " miles at 60 miles per hour: " + time + " hours");
+    }
+}
+
+class DistanceMKS extends Distance {
+    public DistanceMKS(double distanceInMiles) {
+        super(distanceInMiles); 
+    }
+
+    @Override
+    public void travelTime() {
+        double distanceInKilometers = distanceInMiles * 1.60934;
+        
+        double speedInKmPerSecond = 100;
+        
+        double timeInSeconds = distanceInKilometers / speedInKmPerSecond;
+        
+        System.out.println("Time to cover the distance of " + distanceInKilometers + " kilometers at 100 km/sec: " + timeInSeconds + " seconds");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Distance distance1 = new Distance(120); 
+        System.out.println("Using Distance class:");
+        distance1.travelTime();  
+        
+        System.out.println("\n----------------------\n");
+
+        DistanceMKS distance2 = new DistanceMKS(120); 
+        System.out.println("Using DistanceMKS class:");
+        distance2.travelTime();  
+    }
+}

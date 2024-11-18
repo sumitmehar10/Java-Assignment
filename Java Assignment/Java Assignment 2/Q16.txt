@@ -1,0 +1,41 @@
+class Counter {
+    static int count = 0;
+
+    int id;
+    
+    public Counter(int id) {
+        this.id = id;
+        count++; 
+    }
+    
+    public static void displayCount() {
+        System.out.println("Total objects created: " + count);
+    }
+
+    public void displayId() {
+        System.out.println("Object ID: " + id);
+    }
+
+    static {
+        System.out.println("Static block executed: Class Counter loaded.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Counter.displayCount();
+        
+        Counter obj1 = new Counter(1);
+        obj1.displayId();  
+        
+        Counter obj2 = new Counter(2);
+        obj2.displayId();  
+        
+        Counter.displayCount();  
+        
+        Counter obj3 = new Counter(3);
+        obj3.displayId();  
+        
+        Counter.displayCount();  
+    }
+}

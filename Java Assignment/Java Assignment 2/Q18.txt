@@ -1,0 +1,99 @@
+class BaseClass {
+    public void baseMethod() {
+        System.out.println("Base class method executed.");
+    }
+}
+interface Interface1 {
+    void method1();
+    void method2();
+}
+
+interface Interface2 {
+    void method3();
+    void method4();
+}
+
+interface Interface3 {
+    void method5();
+    void method6();
+}
+
+interface Interface4 extends Interface1, Interface2, Interface3 {
+    void method7();
+}
+
+class ConcreteClass extends BaseClass implements Interface4 {
+    
+    public void method1() {
+        System.out.println("Method1 from Interface1 executed.");
+    }
+
+    public void method2() {
+        System.out.println("Method2 from Interface1 executed.");
+    }
+
+    public void method3() {
+        System.out.println("Method3 from Interface2 executed.");
+    }
+
+    public void method4() {
+        System.out.println("Method4 from Interface2 executed.");
+    }
+
+    public void method5() {
+        System.out.println("Method5 from Interface3 executed.");
+    }
+
+    public void method6() {
+        System.out.println("Method6 from Interface3 executed.");
+    }
+
+    public void method7() {
+        System.out.println("Method7 from Interface4 executed.");
+    }
+}
+
+class MethodDemo {
+    public static void callInterface1(Interface1 i1) {
+        i1.method1();
+        i1.method2();
+    }
+
+    public static void callInterface2(Interface2 i2) {
+        i2.method3();
+        i2.method4();
+    }
+
+    public static void callInterface3(Interface3 i3) {
+        i3.method5();
+        i3.method6();
+    }
+
+    public static void callInterface4(Interface4 i4) {
+        i4.method1();
+        i4.method2();
+        i4.method3();
+        i4.method4();
+        i4.method5();
+        i4.method6();
+        i4.method7();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        ConcreteClass concreteObj = new ConcreteClass();
+        
+        System.out.println("Calling Interface1 methods:");
+        MethodDemo.callInterface1(concreteObj);
+        
+        System.out.println("\nCalling Interface2 methods:");
+        MethodDemo.callInterface2(concreteObj);
+        
+        System.out.println("\nCalling Interface3 methods:");
+        MethodDemo.callInterface3(concreteObj);
+        
+        System.out.println("\nCalling Interface4 methods:");
+        MethodDemo.callInterface4(concreteObj);
+    }
+}

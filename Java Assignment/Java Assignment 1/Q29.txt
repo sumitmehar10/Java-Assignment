@@ -1,0 +1,42 @@
+public class FindDuplicatesAndFrequency {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the number of elements: ");
+        int n = scanner.nextInt();
+
+        int[] numbers = new int[n];
+
+        System.out.println("Enter the elements:");
+
+        for (int i = 0; i < n; i++) {
+            numbers[i] = scanner.nextInt();
+        }
+
+        findDuplicates(numbers);
+
+        scanner.close();
+    }
+
+    public static void findDuplicates(int[] numbers) {
+        Map<Integer, Integer> frequencyMap = new HashMap<>();
+
+        for (int num : numbers) {
+            frequencyMap.put(num, frequencyMap.getOrDefault(num, 0) + 1);
+        }
+
+        boolean foundDuplicate = false;
+        System.out.println("Duplicate elements and their frequency:");
+
+        for (Map.Entry<Integer, Integer> entry : frequencyMap.entrySet()) {
+            if (entry.getValue() > 1) { // If frequency is greater than 1, it's a duplicate
+                System.out.println("Element: " + entry.getKey() + " | Frequency: " + entry.getValue());
+                foundDuplicate = true;
+            }
+        }
+
+        if (!foundDuplicate) {
+            System.out.println("No duplicate elements found.");
+        }
+    }
+}

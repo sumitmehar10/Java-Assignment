@@ -1,0 +1,17 @@
+public class ExceptionDemo {
+    public static void main(String[] args) {
+        try {
+            int[] arr = new int[-5]; 
+        } catch (NegativeArraySizeException e) {
+            System.out.println("Caught exception: NegativeArraySizeException");
+            System.out.println("Exception message: " + e.getMessage());
+        }
+
+        try {
+            int result = 10 / 0; 
+        } catch (ArithmeticException e) {
+            System.out.println("Caught exception: ArithmeticException");
+            System.out.println("Exception message: " + e.getMessage());
+        }
+    }
+}

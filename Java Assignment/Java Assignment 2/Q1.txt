@@ -1,0 +1,55 @@
+public class MergeSortedArrays {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the size of the first array A: ");
+        int sizeA = scanner.nextInt();
+        int[] A = new int[sizeA];
+
+        System.out.println("Enter the elements of array A (sorted in ascending order):");
+        for (int i = 0; i < sizeA; i++) {
+            A[i] = scanner.nextInt();
+        }
+
+        System.out.print("Enter the size of the second array B: ");
+        int sizeB = scanner.nextInt();
+        int[] B = new int[sizeB];
+
+        System.out.println("Enter the elements of array B (sorted in ascending order):");
+        for (int i = 0; i < sizeB; i++) {
+            B[i] = scanner.nextInt();
+        }
+
+        int[] C = mergeArrays(A, B);
+
+        System.out.println("Merged array C in ascending order:");
+        for (int i = 0; i < C.length; i++) {
+            System.out.print(C[i] + " ");
+        }
+
+        scanner.close();
+    }
+
+    public static int[] mergeArrays(int[] A, int[] B) {
+        int[] C = new int[A.length + B.length];
+        int i = 0, j = 0, k = 0;
+
+        while (i < A.length && j < B.length) {
+            if (A[i] <= B[j]) {
+                C[k++] = A[i++];
+            } else {
+                C[k++] = B[j++];
+            }
+        }
+
+        while (i < A.length) {
+            C[k++] = A[i++];
+        }
+
+        while (j < B.length) {
+            C[k++] = B[j++];
+        }
+
+        return C;
+    }
+}
